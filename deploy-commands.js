@@ -2,11 +2,11 @@ const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 require('dotenv').config();
-const { clientId, guildId } = require('./config.json');
 //const { permAdmin } = require('./permissions/perms.js');
 
 const commands = [];
 
+// Es necesario crear subcarpetas (ponga nombre de categorias) dentro de commands para que funcione
 const folders = fs.readdirSync('./commands/');
 for (const module of folders) {
 	const commandFiles = fs
@@ -18,23 +18,27 @@ for (const module of folders) {
 	}
 }
 
-const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+const rest = new REST({ version: '9' }).setToken(
+	process.env.DISCORD_CLIENT_TOKEN
+);
 
 (async () => {
 	try {
 		console.log('✅ Started refreshing application (/) commands.');
 
+		//Comandos
 		const response = await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
+			Routes.applicationGuildCommands(
+				process.env.DISCORD_CLIENT_ID,
+				process.env.DISCORD_GUILD_ID
+			),
 			{
 				body: commands,
 			}
 		);
 		console.log('✅ Successfully reloaded application (/) commands.');
 
-		//Comandos
-		console.log('');
-		console.log('📚 Command list');
+		console.log('\n📚 Command list');
 		// Nombres y ID de los comandos
 		response.forEach((element) => {
 			console.log(`🆔 ${element.id} | 📖 ${element.name} `);
@@ -43,7 +47,10 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
 		// Permisos
 		await rest.put(
-			Routes.guildApplicationCommandsPermissions(clientId, guildId),
+			Routes.guildApplicationCommandsPermissions(
+				process.env.DISCORD_CLIENT_ID,
+				process.env.DISCORD_GUILD_ID
+			),
 			{
 				body: permAdmin,
 			}

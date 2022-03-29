@@ -19,12 +19,8 @@ require('dotenv').config();
 
 // Create a new client instance
 const client = new Client({
-	intents: [
-		Intents.FLAGS.GUILDS,
-		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-	],
-	partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+	partials: ['MESSAGE', 'CHANNEL'],
 });
 
 // Events
@@ -57,4 +53,4 @@ for (const module of folders) {
 }
 
 // Login to Discord with your client's token
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_CLIENT_TOKEN);
