@@ -1,24 +1,22 @@
 # PlantillaBot
 
-## 🤖 Plantilla para Bots de Discord
-
-Construida con la documentación https://discordjs.guide/#before-you-begin. Para más información dirigirse a esa guía.
+**Plantilla para Bots de Discord**, construida con la documentación de [Discord.js guía](https://discordjs.guide/#before-you-begin). Para más información dirigirse a esa guía.
 
 ## 🚀 Empezando
 
 ### 🔧 Instalación
 
-Pasos a seguir para instalar la plantilla:
+**Pasos a seguir para instalar la plantilla:**
 
-1. Clonar el repositorio o descargar la última versión desde [GitHub](https://github.com/FedeZet/PlantillaBot/releases) (deberá descomprimir el archivo zip).
+**1. Clonar el repositorio o descargar la última versión desde [GitHub](https://github.com/FedeZet/PlantillaBot/releases) (deberá descomprimir el archivo zip).**
 
 ```bash
 git clone https://github.com/FedeZet/PlantillaBot.git
 ```
 
-Después de descargar la plantilla puede renombrarla a un nombre que le guste (la del bot).
+_Después de descargar la plantilla puede renombrarla a un nombre que le guste (la del bot)._
 
-2. Instalar los paquetes necesarios:
+**2. Instalar los paquetes necesarios:**
 
 Con este comando se instalarán los paquetes necesarios para que funcione la plantilla
 
@@ -26,7 +24,7 @@ Con este comando se instalarán los paquetes necesarios para que funcione la pla
 npm install
 ```
 
-3. Completar los datos de configuración en el archivo `.env`, deberá tener el siguiente contenido:
+**3. Completar los datos de configuración en el archivo `.env`:**
 
 Estos datos son necesarios para que el bot funcione correctamente. Deberá crear el archivo `.env` en la raíz del proyecto. El archivo deberá tener el siguiente contenido:
 
@@ -39,7 +37,7 @@ DISCORD_CLIENT_ID=[id del bot]
 DISCORD_GUILD_ID=[id del servidor/gremio de Discord]
 ```
 
-_Agregar los datos sin corchetes rectos []_
+> Agregar los datos sin corchetes rectos [ ]
 
 Este contenido puede obtenerlo en el archivo `.env.example` que se encuentra en la raíz del proyecto. También puede borrar la extensión `.example` y renombrar el archivo a `.env`.
 
@@ -47,9 +45,9 @@ Este contenido puede obtenerlo en el archivo `.env.example` que se encuentra en 
 
 Después de configurar el archivo `.env`. Podemos continuar con la ejecución del bot.
 
-1. Primero debemos desplegar los comandos (/) del bot a Discord. Esto se debe realizar cada vez que creamos un comando o modificamos la estructura del comando.
+**1. Primero debemos desplegar los comandos (/) del bot a Discord. Esto se debe realizar cada vez que creamos un comando o modificamos la estructura del comando.**
 
-💡 Un ejemplo de una estructura de comando sería:
+_💡 Un ejemplo de una estructura de comando sería:_
 
 ```js
 // Archivo: ./commands/test/ping.js
@@ -70,7 +68,7 @@ module.exports = {
 };
 ```
 
-_Para más información sobre el constructor de comandos, dirigirse a la documentación de Discord.js [Slash commands](https://discordjs.guide/interactions/slash-commands.html#slash-commands)._
+> Para más información sobre el constructor de comandos, dirigirse a la documentación de Discord.js [Slash commands](https://discordjs.guide/interactions/slash-commands.html#slash-commands).
 
 Para desplegar los comandos a Discord, debemos ejecutar el siguiente comando:
 
@@ -82,7 +80,7 @@ npm run deploy
 node deploy-commands.js
 ```
 
-2. Ahora podemos ejecutar el bot.
+**2. Ahora podemos ejecutar el bot.**
 
 ```bash
 npm start
@@ -92,4 +90,4 @@ npm start
 node .
 ```
 
-Y listo, el bot está listo para funcionar.
+**Y listo, el bot está listo para funcionar.**
