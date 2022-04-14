@@ -6,9 +6,10 @@ require('dotenv').config();
 
 const commands = [];
 
-// Es necesario crear subcarpetas (ponga nombre de categorias) dentro de commands para que funcione
-const folders = fs.readdirSync('./commands/');
-for (const module of folders) {
+// Es necesario crear subcarpetas (ponga nombre de categorias) dentro de la 
+// carpeta commands para que funcione. Ej.: commands/{categoria}/{nombre del comando}.js
+const folder = fs.readdirSync('./commands/');
+for (const module of folder) {
 	const commandFiles = fs
 		.readdirSync(`./commands/${module}`)
 		.filter((file) => file.endsWith('.js'));
@@ -39,12 +40,13 @@ const rest = new REST({ version: '9' }).setToken(
 		console.log('✅ Successfully reloaded application (/) commands.');
 
 		console.log('\n📚 Command list');
-		// Nombres y ID de los comandos
+		// ID y nombres de los comandos
 		response.forEach((element) => {
 			console.log(`🆔 ${element.id} | 📖 ${element.name} `);
 		});
-		/*console.log('');
+		console.log('');
 
+		/*
 		// Permisos
 		await rest.put(
 			Routes.guildApplicationCommandsPermissions(

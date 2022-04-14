@@ -2,3 +2,4 @@ node_modules/
 images/
 .replit
 replit.nix
+.env
