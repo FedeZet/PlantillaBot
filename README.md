@@ -1,4 +1,4 @@
-# PlantillaBot
+# 🤖 PlantillaBot
 
 **Plantilla para Bots de Discord**, construida con la documentación de [Discord.js guía](https://discordjs.guide/#before-you-begin). Para más información dirigirse a esa guía.
 
@@ -90,4 +90,4 @@ npm start
 node .
 ```
 
-**Y listo, el bot está listo para funcionar.**
+**Y listo, el bot está listo para funcionar. 🥳**
