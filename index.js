@@ -42,23 +42,44 @@ for (const file of eventFiles) {
 }
 console.log('');
 
-// Commands
-client.commands = new Collection();
-console.log('📚 Lista de comandos');
-const folder = fs.readdirSync('./commands/');
-for (const module of folder) {
+// Slash Commands
+client.slashCmds = new Collection();
+console.log('📚 Lista de comandos slash (/)');
+const folderSlashCmds = fs.readdirSync('./slash_cmds/');
+for (const module of folderSlashCmds) {
 	const commandFiles = fs
-		.readdirSync(`./commands/${module}`)
+		.readdirSync(`./slash_cmds/${module}`)
 		.filter((file) => file.endsWith('.js'));
 
 	console.log(`🧮 Categoría: ${module}`);
 	for (const file of commandFiles) {
-		const command = require(`./commands/${module}/${file}`);
+		const command = require(`./slash_cmds/${module}/${file}`);
 		// Set a new item in the Collection
 		// With the key as the command name and the value as the exported module
-		client.commands.set(command.data.name, command);
+		client.slashCmds.set(command.data.name, command);
 
 		console.log(`📖 ${command.data.name} | ${command.data.description}`);
+	}
+	console.log('');
+}
+
+// Prefix Commands
+client.prefixCmds = new Collection();
+console.log(`📚 Lista de comandos prefix (${process.env.PREFIX})`);
+const folderPrefixCmds = fs.readdirSync('./prefix_cmds/');
+for (const module of folderPrefixCmds) {
+	const commandFiles = fs
+		.readdirSync(`./prefix_cmds/${module}`)
+		.filter((file) => file.endsWith('.js'));
+
+	console.log(`🧮 Categoría: ${module}`);
+	for (const file of commandFiles) {
+		const command = require(`./prefix_cmds/${module}/${file}`);
+		// Set a new item in the Collection
+		// With the key as the command name and the value as the exported module
+		client.prefixCmds.set(command.name, command);
+
+		console.log(`📖 ${command.name} | ${command.description}`);
 	}
 	console.log('');
 }

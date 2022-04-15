@@ -6,15 +6,15 @@ require('dotenv').config();
 
 const commands = [];
 
-// Es necesario crear subcarpetas (ponga nombre de categorias) dentro de la 
-// carpeta commands para que funcione. Ej.: commands/{categoria}/{nombre del comando}.js
-const folder = fs.readdirSync('./commands/');
+// Es necesario crear subcarpetas (ponga nombre de categorias) dentro de la
+// carpeta commands para que funcione. Ej.: slash_cmds/{categoria}/{nombre del comando}.js
+const folder = fs.readdirSync('./slash_cmds/');
 for (const module of folder) {
 	const commandFiles = fs
-		.readdirSync(`./commands/${module}`)
+		.readdirSync(`./slash_cmds/${module}`)
 		.filter((file) => file.endsWith('.js'));
 	for (const file of commandFiles) {
-		const command = require(`./commands/${module}/${file}`);
+		const command = require(`./slash_cmds/${module}/${file}`);
 		commands.push(command.data.toJSON());
 	}
 }
